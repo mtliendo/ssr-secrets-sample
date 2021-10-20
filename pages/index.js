@@ -2,7 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Home({ secretTest, secretTest2 }) {
+	console.log('the secret test', secretTest)
+	console.log('the secret test2', secretTest2)
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -73,6 +75,9 @@ export async function getServerSideProps() {
 	console.log(process.env.secrets.SECRET_TEST_OTHER)
 
 	return {
-		props: { productData: 'SOMETHING' },
+		props: {
+			secretTest: process.env.SECRET_TEST,
+			secretTest2: process.env.secrets.SECRET_TEST_OTHER,
+		},
 	}
 }
